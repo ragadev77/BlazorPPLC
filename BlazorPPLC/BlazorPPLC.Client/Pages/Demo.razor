@@ -1,0 +1,29 @@
+﻿@rendermode InteractiveAuto
+@inject IConfiguration config
+
+<h3>Demo</h3>
+<p>
+    Just a demo
+</p>
+<p>
+    @demoInfo
+</p>
+<p>
+    Current count is @currentCounter
+</p>
+<button class="btn btn-outline-primary" @onclick="IncreaseCount"> Increase Counter </button>
+
+@code {
+    private int currentCounter = 0;
+    private string demoInfo = "";
+
+    // protected override void OnInitialized()
+    // {
+    //     demoInfo = config.GetValue<string>("AppInfo");
+    // }
+
+    private void IncreaseCount()
+    {
+        currentCounter += 1;
+    }
+}

@@ -1,0 +1,12 @@
+﻿@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<button @onclick="RevisePlan" class="btn btn-primary">Revise Plan</button>
+
+@code {
+    void RevisePlan()
+    {
+        NavigationManager.NavigateTo("/editplan");
+    }
+
+}

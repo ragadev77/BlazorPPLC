@@ -1,0 +1,6 @@
+_others/
+bin/
+node_modules/
+debug/
+obj/
+.vs/

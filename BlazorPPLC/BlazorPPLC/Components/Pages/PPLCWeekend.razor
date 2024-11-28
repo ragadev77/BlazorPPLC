@@ -1,0 +1,58 @@
+﻿@page "/planning/weekend"
+@inject IPlanningService PlanningService
+@attribute [StreamRendering]
+
+<h3>Weekly Production Planning</h3>
+
+@if (plannings == null)
+{
+    <p><em>Loading...</em></p>
+}
+//else if (plannings.Count == 0){    <span>No Data Found.</span>}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Flag</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in plannings)
+            {
+                <tr>
+                    <td>@data.Flag</td>
+                    <td>@data.Monday</td>
+                    <td>@data.Tuesday</td>
+                    <td>@data.Wednesday</td>
+                    <td>@data.Thursday</td>
+                    <td>@data.Friday</td>
+                    <td>@data.Saturday</td>
+                    <td>@data.Sunday</td>
+                    <td>@data.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string notes = "";
+
+    List<ProductionPlanWeekend> plannings = new List<ProductionPlanWeekend>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        plannings = await PlanningService.GetProductionPlanWeekends();
+
+    }
+
+}
